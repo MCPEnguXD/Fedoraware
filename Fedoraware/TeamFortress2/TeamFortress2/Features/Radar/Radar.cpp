@@ -61,12 +61,11 @@ void CRadar::DrawRadar()
 	//Build the bg color with the wanted alpha.
 	const Color_t clrBack = { 36, 36, 36, static_cast<byte>(Vars::Radar::Main::BackAlpha.Value) };
 
-
 	//Background
-	g_Draw.Rect(RadarX - RadarSize, RadarY - RadarSize, RadarSize * 2, RadarSize * 2, clrBack);
+	g_Draw.Circle(RadarX, RadarY, RadarSize, clrBack);
 
 	//Outline
-	g_Draw.OutlinedRect(RadarX - RadarSize, RadarY - RadarSize, RadarSize * 2, RadarSize * 2, {
+	g_Draw.OutlinedCircle(RadarX, RadarY, RadarSize, {
 							43, 43, 45, static_cast<byte>(Vars::Radar::Main::LineAlpha.Value)
 						});
 
@@ -78,6 +77,7 @@ void CRadar::DrawRadar()
 					43, 43, 45, static_cast<byte>(Vars::Radar::Main::LineAlpha.Value)
 				});
 }
+
 
 bool CRadar::GetDrawPosition(int& x, int& y, int& z, CBaseEntity* pEntity)
 {
